@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import Aux from '../../hoc/Aux'
+import Aux from '../../hoc/Aux';
+import './steps.css';
+
 class StepThree extends Component {
   state = {
     dish: [],
@@ -27,7 +29,6 @@ class StepThree extends Component {
   errCheck = () =>{
     let stringToNum = this.state.serving.map(Number);
     const getVal = stringToNum.reduce((a, b) => a + b, 0);
-    console.log(getVal);
     if(this.props.persons > getVal){
       this.setState({valid: true});
     } else if (this.state.restaurant === null) {
@@ -45,14 +46,13 @@ class StepThree extends Component {
     <form>
       <label>Select a Dish</label>
       <select onChange={this.dishChanged} >
-        <option></option>
-        {this.props.dishSelect.map(restObj=>{
-          return <option value={restObj.name}>
+        <option>   </option>
+        {this.props.dishSelect.map(restObj=>{return <option value={restObj.name}>
         {restObj.name}</option>})}
       </select>
       <label> Number of Servings</label>
       <select onChange={this.servingChanged}>
-        {options.map((i) => {return (<option value={i}>{i}</option>)})}
+        {options.map((i) => {return (<option key={i} value={i}>{i}</option>)})}
       </select>
     </form>
     );
@@ -61,8 +61,7 @@ class StepThree extends Component {
 
   render() {
     const options = [];
-    for (let i=1; i <11; i += 1) { options.push(i); }
-
+    for (let i=1; i <11; i += 1) { options.push(i);}
     return (
     <Aux>
       <form>
@@ -70,23 +69,22 @@ class StepThree extends Component {
         <select onChange={this.dishChanged} >
           <option></option>
           {this.props.dishSelect.map(restObj=>{
-            return <option value={restObj.name}>
+            return <option key={restObj.id} value={restObj.name}>
           {restObj.name}</option>})}
        </select>
        <label> Number of Servings</label>
        <select onChange={this.servingChanged}>
-        {options.map((i) => {return (<option value={i}>{i}</option>)})}
+       <option> </option>
+        {options.map((i) => {return (<option key={i} value={i}>{i}</option>)})}
        </select>
       </form>
-
-      {this.state.valid && <p>The number of servings must be greater than number of people eating</p>}
-
       <div>
         { this.state.additionalDish.map(input => { return input}) }
-        <button onClick={this.addAdditionalDish.bind(this)}>ADD DISH</button>
+        <button className="add"  onClick={this.addAdditionalDish.bind(this)}>ADD DISH</button>
       </div>
-      <button onClick={this.nextStep}>Next</button>
+      {this.state.valid && <p>The number of servings must be greater than number of people eating</p>}
       <button onClick={this.props.previousStep}>Back</button>
+      <button onClick={this.nextStep} className="nxtBtn" >Next</button>
     </Aux>
     );
   }

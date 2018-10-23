@@ -1,10 +1,41 @@
 .ProgressBar{
-  background: red;
- 
+  background:rgb(42, 27, 177);
+  padding:2px;
+  border-radius:10px;
   height:10px;
+  margin:20px 2px;
 }
+.stepBox{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  width:70%;
+  margin:auto;
+}
+.warn{
+  color:red;
+}
+.nxtBtn{
+  color:#fff;
+  background:#43c1a3;
+  margin-left:12px;
+}
+
+.review{
+  margin:auto;
+  width:60%;
+}
+
 .DishHouse{
   display: grid;
   grid-template-columns: 1fr 1fr;
-  background:red;
+  background:#333;
+  color:#fff;
+  border-radius: 8px;
+  margin-bottom:16px;
+}
+.houseColumn{
+  padding-top:20px;
+}
+.add{
+  background:gold;
 }

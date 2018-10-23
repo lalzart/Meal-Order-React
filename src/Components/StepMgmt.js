@@ -6,11 +6,11 @@ import StepFour from './Steps/StepFour';
 import Progress from './Steps/progress';
 import Aux from '../hoc/Aux';
 import data from './Data/data';
-
+import Head from './Header';
+import './Steps/steps.css';
 
 
 class StepMgmt extends Component {
-
 
   state = {
     step: 1,
@@ -99,20 +99,18 @@ class StepMgmt extends Component {
         );
       default:
         return (
-          this.setState({step: 1})
+          <h1>Thank You</h1>
         );
     }
   }
   
   render() {
-    const style = {
-      background: 'red',
-      width : (this.state.step / 4 * 100) + '%'
-    }
+
     return(
       <Aux>
-      <Progress className="ProgressBar" style={style}/>
-       {this.showStep()}
+        <Head />  
+        <Progress stepNum={this.state.step}/>
+        {this.showStep()}
       </Aux>
     )
   }

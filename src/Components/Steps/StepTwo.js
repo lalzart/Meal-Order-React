@@ -33,18 +33,18 @@ class StepTwo extends Component {
   render() {
     return (
       <Aux>
-         <form>
-          <label>Select a Restaurants</label>
+         <div className="stepBox">
+          <label>Select a Restaurant</label>
           <select onChange={this.restaurantsChanged}>
             <option></option>
             {this.props.restSelect.map(row=>{
-              return <option value={row}>{row}</option>
+              return <option key={row} value={row}>{row}</option>
           })}
           </select>
-        </form>
-        {this.state.valid && <p>***incomplete***</p>}
-        <button onClick={this.nextStep}>Next</button>
+        </div>
+        {this.state.valid && <p className="warn">***incomplete***</p>}
         <button onClick={this.props.previousStep}>Back</button>
+        <button className="nxtBtn" onClick={this.nextStep}>Next</button>
       </Aux> 
     );
   }
