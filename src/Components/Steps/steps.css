@@ -1,0 +1,10 @@
+.ProgressBar{
+  background: red;
+ 
+  height:10px;
+}
+.DishHouse{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background:red;
+}
